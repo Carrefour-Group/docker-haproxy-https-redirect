@@ -4,12 +4,12 @@ EXPOSE 80/tcp 8181/tcp
 
 USER root
 
+RUN which haproxy
 RUN \
   apk add --virtual .build-deps --no-cache libcap && \
   setcap 'cap_net_bind_service=+ep' /usr/local/bin/haproxy && \
   apk del .build-deps
 
-RUN which haproxy
 USER haproxy
 
 COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
