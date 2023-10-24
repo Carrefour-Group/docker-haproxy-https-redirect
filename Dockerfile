@@ -1,5 +1,7 @@
 FROM haproxy:2.4-alpine
 
+EXPOSE 80/tcp 8181/tcp
+
 USER root
 
 RUN \
